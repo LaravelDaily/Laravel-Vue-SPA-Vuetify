@@ -31,4 +31,10 @@ class PostController extends Controller
         $posts = json_encode($posts_array);
         return $posts;
     }
+    public function newPost(){
+        $text = request('text');
+        $author = request('author');
+        error_log($text);
+        return $text;
+    }
 }

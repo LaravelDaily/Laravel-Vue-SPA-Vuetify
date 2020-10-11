@@ -96,14 +96,24 @@ export default {
                 author: this.author
             }
             axios
-                .post('/api/products', payload)
+                .post('/api/newpost', payload)
                 .then(res => {
                     // if successful then show snackbar, reload posts
-                    let payload = {
-                        text: "Post shared successfully",
-                        timeout: 5000
-                    };
-                    this.$store.commit("showSnackbar", payload);
+                    console.log(res.data);
+                    if (res.data == "success") {
+                        let payload = {
+                            text: "Post shared successfully",
+                            timeout: 5000
+                        };
+                        this.$store.commit("showSnackbar", payload);
+                        this.loadPosts();
+                    } else {
+                        let payload = {
+                            text: res.data,
+                            timeout: 5000
+                        };
+                        this.$store.commit("showSnackbar", payload);
+                    }
 
                 })
                 .catch(err => {

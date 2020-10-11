@@ -2279,14 +2279,27 @@ __webpack_require__.r(__webpack_exports__);
         text: this.text,
         author: this.author
       };
-      axios.post('/api/products', payload).then(function (res) {
+      axios.post('/api/newpost', payload).then(function (res) {
         // if successful then show snackbar, reload posts
-        var payload = {
-          text: "Post shared successfully",
-          timeout: 5000
-        };
+        console.log(res.data);
 
-        _this2.$store.commit("showSnackbar", payload);
+        if (res.data == "success") {
+          var _payload = {
+            text: "Post shared successfully",
+            timeout: 5000
+          };
+
+          _this2.$store.commit("showSnackbar", _payload);
+
+          _this2.loadPosts();
+        } else {
+          var _payload2 = {
+            text: res.data,
+            timeout: 5000
+          };
+
+          _this2.$store.commit("showSnackbar", _payload2);
+        }
       })["catch"](function (err) {
         // if successful then show snackbar, reload posts
         var payload = {
