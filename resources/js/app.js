@@ -5,6 +5,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 import routes from './routes'
+import store from "./store";
 
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
@@ -15,5 +16,6 @@ const app = new Vue({
     el: '#app',
     components: { App },
     router: new VueRouter(routes),
-    vuetify: new Vuetify()
+    vuetify: new Vuetify(),
+    store
 })

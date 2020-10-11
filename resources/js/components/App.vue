@@ -1,31 +1,30 @@
 <template>
-    <v-app id="main">
-        <navbar ref="navbar"></navbar>
+<v-app>
+    <Snackbar />
+    <Header></Header>
+    <router-view class="full-height"></router-view>
+    <Footer></Footer>
 
-        <app-header @toggle-drawer="$refs.navbar.drawer = !$refs.navbar.drawer"></app-header>
-
-        <v-main>
-            <v-container>
-                <router-view></router-view>
-            </v-container>
-        </v-main>
-
-        <app-footer></app-footer>
-    </v-app>
-
+</v-app>
 </template>
 
 <script>
-    import Navbar from './Navbar'
-    import Header from './Header'
-    import Footer from './Footer'
+import Header from './Header'
+import Footer from './Footer'
+import Snackbar from "./Snackbar";
 
-    export default {
-        name: 'App',
-        components: {
-            'navbar': Navbar,
-            'app-header': Header,
-            'app-footer': Footer
-        }
+export default {
+    name: 'App',
+    components: {
+        Header,
+        Footer,
+        Snackbar
     }
+}
 </script>
+
+<style scoped>
+.full-height {
+    height: 100%;
+}
+</style>
