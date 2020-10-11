@@ -3,7 +3,9 @@
     <v-card-text class="text-h4 text-center">Posts</v-card-text>
     <v-col justify="start" align="center" class="mx-1 my-1 px-1 py-1">
         <v-col x-small="12" sm="10" md="10" lg="7" xl="6" class="px-0 py-0 mx-0 my-0">
-            <v-card class="mx-1 my-2 px-3 py-1 mb-10" color="grey lighten-4">
+
+            <!--new post textfield-->
+            <v-card v-if="!loading" class="mx-1 my-2 px-3 py-1 mb-10" color="grey lighten-4">
                 <v-row class="mx-0 mt-3">
                     <v-textarea v-model="text" :error-messages="textError" background-color="white" auto-grow outlined rows="5" row-height="15" color="green lighten-1">
                         <template v-slot:label>
@@ -18,6 +20,17 @@
                     <v-btn v-if="!textAreaIsEmpty" color="white" class="mx-3" small @click="cancelPost">Cancel</v-btn>
                 </v-row>
             </v-card>
+
+            <!--Skeleton Loaders when loading posts-->
+            <div v-if="loading">
+                <v-card v-for="index in 5" :key="index" class="mx-1 my-2 d-flex flex-row justify-start align-start">
+                    <v-sheet class="sheet">
+                        <v-skeleton-loader class="mx-auto" type="avatar, list-item-two-line"></v-skeleton-loader>
+                    </v-sheet>
+                </v-card>
+            </div>
+
+            <!--Posts loaded from api-->
             <v-card v-for="post in posts" class="mx-1 my-2">
                 <v-row class="mx-0 px=0 pt-2">
                     <v-icon class="py-0 mx-3">
@@ -114,5 +127,19 @@ export default {
 <style scoped>
 .white-back {
     background-color: white;
+}
+
+.sheet {
+    flex: 1;
+    justify-self: start;
+    display: flex;
+}
+
+.sheet div {
+    margin: 0 !important;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: justify;
 }
 </style>

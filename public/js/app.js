@@ -2222,6 +2222,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2382,7 +2395,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.white-back[data-v-00e83377] {\r\n    background-color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.white-back[data-v-00e83377] {\r\n    background-color: white;\n}\n.sheet[data-v-00e83377] {\r\n    flex: 1;\r\n    justify-self: start;\r\n    display: flex;\n}\n.sheet div[data-v-00e83377] {\r\n    margin: 0 !important;\r\n    padding-left: 10px;\r\n    padding-top: 10px;\r\n    width: 100%;\r\n    text-align: justify;\n}\r\n", ""]);
 
 // exports
 
@@ -21234,84 +21247,122 @@ var render = function() {
               attrs: { "x-small": "12", sm: "10", md: "10", lg: "7", xl: "6" }
             },
             [
-              _c(
-                "v-card",
-                {
-                  staticClass: "mx-1 my-2 px-3 py-1 mb-10",
-                  attrs: { color: "grey lighten-4" }
-                },
-                [
-                  _c(
-                    "v-row",
-                    { staticClass: "mx-0 mt-3" },
-                    [
-                      _c("v-textarea", {
-                        attrs: {
-                          "error-messages": _vm.textError,
-                          "background-color": "white",
-                          "auto-grow": "",
-                          outlined: "",
-                          rows: "5",
-                          "row-height": "15",
-                          color: "green lighten-1"
-                        },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "label",
-                            fn: function() {
-                              return [
-                                _c("div", [
-                                  _vm._v(
-                                    "\r\n                                What's on your mind?\r\n                            "
-                                  )
-                                ])
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ]),
-                        model: {
-                          value: _vm.text,
-                          callback: function($$v) {
-                            _vm.text = $$v
-                          },
-                          expression: "text"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-row",
-                    { staticClass: "mx-1 mt-0 mb-2" },
+              !_vm.loading
+                ? _c(
+                    "v-card",
+                    {
+                      staticClass: "mx-1 my-2 px-3 py-1 mb-10",
+                      attrs: { color: "grey lighten-4" }
+                    },
                     [
                       _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "green lighten-2", small: "" },
-                          on: { click: _vm.sharePost }
-                        },
-                        [_vm._v("Share")]
+                        "v-row",
+                        { staticClass: "mx-0 mt-3" },
+                        [
+                          _c("v-textarea", {
+                            attrs: {
+                              "error-messages": _vm.textError,
+                              "background-color": "white",
+                              "auto-grow": "",
+                              outlined: "",
+                              rows: "5",
+                              "row-height": "15",
+                              color: "green lighten-1"
+                            },
+                            scopedSlots: _vm._u(
+                              [
+                                {
+                                  key: "label",
+                                  fn: function() {
+                                    return [
+                                      _c("div", [
+                                        _vm._v(
+                                          "\r\n                                What's on your mind?\r\n                            "
+                                        )
+                                      ])
+                                    ]
+                                  },
+                                  proxy: true
+                                }
+                              ],
+                              null,
+                              false,
+                              2966447560
+                            ),
+                            model: {
+                              value: _vm.text,
+                              callback: function($$v) {
+                                _vm.text = $$v
+                              },
+                              expression: "text"
+                            }
+                          })
+                        ],
+                        1
                       ),
                       _vm._v(" "),
-                      !_vm.textAreaIsEmpty
-                        ? _c(
+                      _c(
+                        "v-row",
+                        { staticClass: "mx-1 mt-0 mb-2" },
+                        [
+                          _c(
                             "v-btn",
                             {
-                              staticClass: "mx-3",
-                              attrs: { color: "white", small: "" },
-                              on: { click: _vm.cancelPost }
+                              attrs: { color: "green lighten-2", small: "" },
+                              on: { click: _vm.sharePost }
                             },
-                            [_vm._v("Cancel")]
-                          )
-                        : _vm._e()
+                            [_vm._v("Share")]
+                          ),
+                          _vm._v(" "),
+                          !_vm.textAreaIsEmpty
+                            ? _c(
+                                "v-btn",
+                                {
+                                  staticClass: "mx-3",
+                                  attrs: { color: "white", small: "" },
+                                  on: { click: _vm.cancelPost }
+                                },
+                                [_vm._v("Cancel")]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              ),
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.loading
+                ? _c(
+                    "div",
+                    _vm._l(5, function(index) {
+                      return _c(
+                        "v-card",
+                        {
+                          key: index,
+                          staticClass:
+                            "mx-1 my-2 d-flex flex-row justify-start align-start"
+                        },
+                        [
+                          _c(
+                            "v-sheet",
+                            { staticClass: "sheet" },
+                            [
+                              _c("v-skeleton-loader", {
+                                staticClass: "mx-auto",
+                                attrs: { type: "avatar, list-item-two-line" }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    }),
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _vm._l(_vm.posts, function(post) {
                 return _c(
